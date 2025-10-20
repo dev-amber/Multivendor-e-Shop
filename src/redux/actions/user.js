@@ -39,7 +39,7 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: "LoadUserRequest" });
 
-    const { data } = await axios.get(`${server}/user/getUser`, {
+    const { data } = await axios.get(`${server}/user/getSeller`, {
       withCredentials: true, // important for cookies
     });
 
@@ -54,6 +54,36 @@ export const loadUser = () => async (dispatch) => {
 
     dispatch({
       type: "LoadUserFail",
+      payload: error.response?.data?.message || "Something went wrong",
+    });
+  }
+};
+
+
+
+// losd seller
+export const loadSeller = () => async (dispatch) => {
+  try {
+    dispatch({ type: "LoadSellerRequest" });
+
+    const { data } = await axios.get(`${server}/shop/getSeller`, {
+      withCredentials: true, // ✅ needed to send cookies (JWT token)
+    });
+
+    console.log("✅ loadSeller response:", data);
+
+    dispatch({
+      type: "LoadSellerSuccess",
+      payload: {
+        seller: data.seller,  // ✅ key matches reducer
+        token: data.token,  // ✅ store token if backend sends it
+      },
+    });
+  } catch (error) {
+    console.error("❌ loadSeller error:", error.response?.data || error.message);
+
+    dispatch({
+      type: "LoadSellerFail",
       payload: error.response?.data?.message || "Something went wrong",
     });
   }

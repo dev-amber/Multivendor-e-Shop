@@ -5,6 +5,8 @@ import App from "./App";
 import Store from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
 import axios from "axios"
+import { BrowserRouter } from "react-router-dom";
+
 
 axios.defaults.withCredentials = true; 
 
@@ -13,7 +15,9 @@ const root = createRoot(rootElement);
 
 root.render(
   <Provider store={Store}>
+   <BrowserRouter>
     <App />
+    </BrowserRouter>
   </Provider>
 );
 

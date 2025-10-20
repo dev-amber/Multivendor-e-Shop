@@ -1,22 +1,26 @@
-import React, { act } from 'react'
-import styles from '../../styles/style'
-import { navItems } from '../../static/data'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
+import { navItems } from "../../static/data";
+import styles from "../../styles/style";
 
-const Navbar = ({active}) => {
+const Navbar = ({ active }) => {
   return (
-    <div className={`${styles.noramlFlex}`}>
-      {
-        navItems && navItems.map((i,index)=>(
-            <div className='flex ' key={index}>
-                <Link to={i.url} className={`${active === index + 1 ? "text-[#17dd1f]" : "text-[#fff]"} font-[500] px-6 cursor-pointer` }>
-                {i.title}
-                </Link>
-                </div>
-        ))
-      }
+    <div className={`block lg:flex ${styles.normalFlex} bg-[#000]`}>
+      {navItems &&
+        navItems.map((item, index) => (
+          <div key={index} className="flex">
+            <Link
+              to={item.url}
+              className={`${
+                active === index + 1 ? "text-[#17dd1f]" : "text-white"
+              } pb-[30px] lg:pb-0 font-[500] px-6 cursor-pointer`}
+            >
+              {item.title}
+            </Link>
+          </div>
+        ))}
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

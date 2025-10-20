@@ -1,26 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/style";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
 import { server } from "../../server";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
-const Login = () => {
+const ShopLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
+
+
   const navigate=useNavigate()
+    const { isSeller, seller } = useSelector((state) => state.seller);
+ // is ko bhi dakna ha baad ma 
+   useEffect(()=>{
+      if(isSeller === true){
+       navigate(`/shop/${seller._id}`)
+      }
+   },[])
+
+
   const handleSubmit =async(e)=>{
     e.preventDefault();
 
-    await axios.post(`${server}/user/login-user`,{
+    await axios.post(`${server}/shop/login-shop`,{
       email,
       password,
     },{withCredentials:true}// bcz we store cookie
   ). then((res)=>{
       toast.success("Login Successfull");
-      navigate("/")
       window.location.reload(true)
     })
     .catch((error)=>{
@@ -32,7 +43,7 @@ const Login = () => {
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900" >
-          Login to your account
+          Login to your shop
         </h2>
       </div>
 
@@ -139,7 +150,7 @@ const Login = () => {
             {/* Sign Up */}
             <div className={`${styles.noramlFlex} w-full`}>
               <h4>Not have any account?</h4>
-              <Link to="/sign-up" className="text-blue-600 pl-2">
+              <Link to="/shop-create" className="text-blue-600 pl-2">
                 Sign Up
               </Link>
             </div>
@@ -150,4 +161,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ShopLogin;
