@@ -1,1 +1,1 @@
-Multivendoer-e-s=Shop
+Multivendoer-e-Shop
