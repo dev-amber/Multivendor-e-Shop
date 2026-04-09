@@ -410,8 +410,7 @@ export const navItems = [
       discount_price: 89,
       rating: 5,
       total_sell: 49,
-      stock: 10,
-      category:"Shoes"
+      stock: 10
     },
     {
       id: 1,
