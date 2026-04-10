@@ -21,7 +21,6 @@ const UserInbox = () => {
   const [newMessage, setNewMessage] = useState("");
   const [userData, setUserData] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
-  const [images, setImages] = useState();
   const [activeStatus, setActiveStatus] = useState(false);
   const [open, setOpen] = useState(false);
   const scrollRef = useRef(null);
@@ -285,7 +284,7 @@ const MessageList = ({
       }
     };
     getUser();
-  }, [me, data]);
+  }, [me, data, online, setActiveStatus]);
 
   return (
     <div
@@ -303,7 +302,7 @@ const MessageList = ({
       <div className="relative">
         <img
           src={`${user?.avatar?.url}`}
-          alt=""
+          alt="User avatar"
           className="w-[50px] h-[50px] rounded-full"
         />
         {online ? (
@@ -373,12 +372,13 @@ const SellerInbox = ({
                 <img
                   src={`${userData?.avatar?.url}`}
                   className="w-[40px] h-[40px] rounded-full mr-3"
-                  alt=""
+                  alt="User avatar"
                 />
               )}
               {item.images && (
                 <img
                   src={`${item.images?.url}`}
+                  alt="Message image"
                   className="w-[300px] h-[300px] object-cover rounded-[10px] ml-2 mb-2"
                 />
               )}
@@ -403,7 +403,6 @@ const SellerInbox = ({
 
       {/* send message input */}
       <form
-        aria-required={true}
         className="p-3 relative w-full flex justify-between items-center"
         onSubmit={sendMessageHandler}
       >
