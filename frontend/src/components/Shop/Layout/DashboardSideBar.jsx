@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineFolder, AiOutlineFolderAdd, AiOutlineGif, AiOutlineGift } from "react-icons/ai";
+import { AiOutlineFolderAdd, AiOutlineGift } from "react-icons/ai";
 import { FiPackage, FiShoppingBag } from "react-icons/fi";
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";

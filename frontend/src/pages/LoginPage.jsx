@@ -12,7 +12,7 @@ const LoginPage = () => {
      if(isAuthenticated === true){
       navigate("/")
      }
-  },[])
+  },[isAuthenticated, navigate])
   return (
     <div className='w-full h-screen bg-gray-50'>
         <Login/>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/style";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,7 +14,6 @@ const ShopLogin = () => {
 
 
   const navigate=useNavigate()
-    const { isSeller, seller } = useSelector((state) => state.seller);
  
 
 
@@ -25,7 +24,7 @@ const ShopLogin = () => {
       email,
       password,
     },{withCredentials:true}// bcz we store cookie
-  ). then((res)=>{
+  ).then((res)=>{
       toast.success("Login Successfull");
       navigate("/dashboard")
       window.location.reload(true)

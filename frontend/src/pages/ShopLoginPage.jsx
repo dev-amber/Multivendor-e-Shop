@@ -11,7 +11,7 @@ const ShopLoginPage = () => {
     if (isSeller === true) {
       navigate(`/dashbaord`);
     }
-  }, [isLoading, isSeller]);
+  }, [isLoading, isSeller, navigate]);
   return (
     <div>
       <ShopLogin />

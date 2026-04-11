@@ -1,25 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AdminHeader from "../components/Layout/AdminHeader";
 import AdminSidebar from "../components/Admin/Layout/AdminSidebar";
 import { DataGrid } from "@mui/x-data-grid";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
-import { AiOutlineArrowRight } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllOrdersOfAdmin } from "../redux/actions/order";
 
 const AdminDashboardOrdersPage = () => {
-    const [orders, setOrders] = useState([]);
   const dispatch = useDispatch();
-  const { adminOrders, adminOrderLoading } = useSelector((state) => state.order);
-  const { sellers } = useSelector((state) => state.seller);
+  const { adminOrders } = useSelector((state) => state.order);
   
   console.log(adminOrders)
   
   useEffect(() => {
     dispatch(getAllOrdersOfAdmin());
-  }, []);
+  }, [dispatch]);
      const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
 

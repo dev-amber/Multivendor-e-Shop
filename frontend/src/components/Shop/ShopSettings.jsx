@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { backend_url, server } from "../../server";
+import { server } from "../../server";
 import { AiOutlineCamera } from "react-icons/ai";
 import styles from "../../styles/style";
 import axios from "axios";
@@ -77,7 +77,7 @@ const ShopSettings = () => {
             <img
                src={avatar ? avatar : `${seller.avatar?.url}`}
               className="w-[200px] h-[200px] rounded-full cursor-pointer realtive "
-              alt="image"
+              alt="Shop avatar"
             />
             <div className="w-[30px] h-[30px] bg-[#E3E9EE] rounded-full flex items-center justify-center cursor-pointer absolute bottom-[10px] right-[15px]">
               <input
@@ -94,7 +94,6 @@ const ShopSettings = () => {
         </div>
         {/* shop Info */}
         <form
-          aria-aria-required={true}
           className="flex flex-col items-center"
           onSubmit={updateHandler}
         >
