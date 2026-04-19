@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../../styles/style";
 import CountDown from "./CountDown";
-import { backend_url } from "../../server";
 import {Link} from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";

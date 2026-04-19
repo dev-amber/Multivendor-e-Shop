@@ -19,7 +19,7 @@ const AllSeller = () => {
 
   useEffect(() => {
     dispatch(getAllSellers());
-  }, []);
+  }, [dispatch]);
 
   
 

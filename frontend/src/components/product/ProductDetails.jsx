@@ -8,7 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllProductsShop } from "../../redux/actions/product";
-import { backend_url, server } from "../../server";
+import { server } from "../../server";
 import styles from "../../styles/style";
 import {
   addToWishlist,

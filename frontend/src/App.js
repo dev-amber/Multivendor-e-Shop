@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import {  Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import {
   LoginPage,
@@ -50,7 +50,6 @@ import { ToastContainer } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { loadSeller, loadUser } from "./redux/actions/user.js";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
 import { ShopHomePage } from "./ShopRoutes.js";
 import SellerProtectedRoute from "./routes/SellerProtectedRoute";
 import { getAllEvents } from "./redux/actions/event.js";
@@ -76,9 +75,8 @@ const App = () => {
     dispatch(getAllProducts());
     dispatch(getAllEvents()); // ✅ Correct
     getStripeApikey();
-  }, []);
+  }, [dsipatch]);
 
-  console.log(stripeApiKey);
 
   return (
     <>

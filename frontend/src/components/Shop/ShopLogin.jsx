@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
 import { server } from "../../server";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+
 
 const ShopLogin = () => {
   const [email, setEmail] = useState("");

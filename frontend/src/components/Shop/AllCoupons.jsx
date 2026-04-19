@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProduct } from "../../redux/actions/product";
-import { Link } from "react-router-dom";
-import { AiOutlineEye, AiOutlineDelete, } from "react-icons/ai";
+import { AiOutlineDelete, } from "react-icons/ai";
 import Loader from "../Layout/Loader";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";

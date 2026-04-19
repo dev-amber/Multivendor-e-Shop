@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllProductsShop } from "../../redux/actions/product";
 import { Link } from "react-router-dom";
-import { AiOutlineEye, AiOutlineDelete } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
-import { deleteProduct } from "../../redux/actions/product";
 import axios from "axios";
 import { server } from "../../server";
 import { useState } from "react";

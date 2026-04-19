@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "../../styles/style";
-import { AiOutlineArrowRight, AiOutlineMoneyCollect } from "react-icons/ai";
+import { AiOutlineMoneyCollect } from "react-icons/ai";
 import { MdBorderClear } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";

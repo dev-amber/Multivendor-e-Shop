@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { AiOutlineMoneyCollect } from "react-icons/ai";
 import styles from "../../styles/style";
 import { Link } from "react-router-dom";

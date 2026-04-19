@@ -1,5 +1,5 @@
-import React, { useEffect, useReducer, useState } from "react";
-import { backend_url, server } from "../../server";
+import React, { useEffect,useState } from "react";
+import { server } from "../../server";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AiOutlineArrowRight,
@@ -10,7 +10,7 @@ import styles from "../../styles/style";
 import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
-import { MdOutlineTrackChanges, MdTrackChanges } from "react-icons/md";
+import {  MdTrackChanges } from "react-icons/md";
 import {
   deleteUserAddress,
   loadUser,
@@ -29,7 +29,6 @@ const ProfileContent = ({ active }) => {
   const [email, setEmail] = useState(user && user.email);
   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
   const [password, setPassword] = useState("");
-  const [avatar, setAvatar] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,7 +40,7 @@ const ProfileContent = ({ active }) => {
       toast.success(successMessage);
       dispatch({ type: "clearMessages" });
     }
-  }, [error, successMessage]);
+  }, [error, successMessage,dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

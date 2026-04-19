@@ -8,7 +8,7 @@ import styles from "../../styles/style";
 import { TfiGallery } from "react-icons/tfi";
 import socketIO from "socket.io-client";
 import { format } from "timeago.js";
-import { backend_url, server } from "../../server";
+import { server } from "../../server";
 const ENDPOINT = "http://localhost:5000/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
@@ -22,7 +22,6 @@ const DashboardMessages = () => {
   const [newMessage, setNewMessage] = useState("");
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [activeStatus, setActiveStatus] = useState(false);
-  const [images, setImages] = useState();
   const [open, setOpen] = useState(false);
   const scrollRef = useRef(null);
 

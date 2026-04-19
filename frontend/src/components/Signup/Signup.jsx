@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
 import { Link } from "react-router-dom";
@@ -14,7 +14,6 @@ export const Signup = () => {
   const [name, setName] = useState("");
   const [visible, setVisible] = useState(false);
   const [avatar, setAvatar] = useState(null);
-  const [preview, setPreview] = useState(null);
 
   const handleFileInputChange = (e) => {
     const reader = new FileReader();

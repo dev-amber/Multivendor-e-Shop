@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 import styles from "../../../styles/style";
 import {
   AiFillHeart,
-  AiFillStar,
   AiOutlineEye,
   AiOutlineHeart,
   AiOutlineShoppingCart,
-  AiOutlineStar,
 } from "react-icons/ai";
 import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +16,6 @@ import {
 import { addToCart } from "../../../redux/actions/cart";
 import { toast } from "react-toastify";
 import Ratings from "../../product/Ratings";
-import { backend_url } from "../../../server";
 
 const ProductCard = ({ data, isEvent }) => {
   const [click, setClick] = useState(false);
@@ -28,8 +25,8 @@ const ProductCard = ({ data, isEvent }) => {
 
   const dispatch = useDispatch();
 
-  const d = data.name;
-  const product_name = d.replace(/\s+/g, "-");
+
+  
 
   useEffect(() => {
     if (wishlist && wishlist.find((i) => i._id === data._id)) {

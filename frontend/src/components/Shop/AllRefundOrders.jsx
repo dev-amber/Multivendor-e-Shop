@@ -1,17 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProductsShop } from "../../redux/actions/product";
 import { Link } from "react-router-dom";
-import {
-  AiOutlineEye,
-  AiOutlineDelete,
-  AiOutlineArrowRight,
-} from "react-icons/ai";
+import { AiOutlineArrowRight } from "react-icons/ai";
 import Loader from "../Layout/Loader";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
-import { deleteProduct } from "../../redux/actions/product";
-import styles from "../../styles/style";
 import { getAllOrderOfShop } from "../../redux/actions/order";
 
 const AllRefundOrders = () => {
@@ -31,7 +24,7 @@ const AllRefundOrders = () => {
     orders &&
     orders.filter(
       (item) =>
-        item.status === "Processing Refund" || item.status === "Refund Success"
+        item.status === "Processing Refund" || item.status === "Refund Success",
     );
 
   const columns = [
