@@ -133,7 +133,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
         </div>
         <img
             src={`${data?.images[0]?.url}`}
-          className="w-[130px] h-min ml-2 mr-2 rounded-[5px]" alt="image"
+          className="w-[130px] h-min ml-2 mr-2 rounded-[5px]" alt=""
         />
         <div className="pl-[5px]">
           <h1>{data.name}</h1>

@@ -38,7 +38,7 @@ const ProductDetails = ({ data }) => {
     } else {
       setClick(false);
     }
-  }, [data, wishlist]);
+  }, [data, wishlist,dispatch]);
 
   const incrementCount = () => {
     setCount(count + 1);
@@ -315,7 +315,7 @@ const ProductDetailsInfo = ({
               <div className="w-full flex my-2">
                 <img
                   src={`${item.user.avatar?.url}`}
-                  alt="image"
+                  alt=""
                   className="w-[50px] h-[50px] rounded-full"
                 />
                 <div className="pl-2 ">

@@ -21,7 +21,7 @@ const DropDown = ({categoriesData, setDropDown}) => {
                 objectFit: "contain",
                 marginLeft: "10px",
                 userSelect: "none"
-            }} alt='image'/>
+            }} alt=''/>
             <h2 className='m-3 cursor-pointer select-none'>{i.title}</h2>
             </div>
         ))
