@@ -152,25 +152,20 @@ router.get(
   }),
 );
 
-//======= Log out ===========//
+// log out user
 router.get(
   "/logout",
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const isProduction = process.env.NODE_ENV === "PRODUCTION";
-
-      // Clear cookie properly
-      res.cookie("token", "", {
+      res.cookie("token", null, {
+        expires: new Date(Date.now()),
         httpOnly: true,
-        expires: new Date(0), // immediately expire
-        sameSite: isProduction ? "none" : "lax",
-        secure: isProduction,
-        path: "/",
+        sameSite: "none",
+        secure: true,
       });
-
-      return res.status(200).json({
+      res.status(201).json({
         success: true,
-        message: "Logged out successfully",
+        message: "Log out successful!",
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
