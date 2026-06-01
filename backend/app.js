@@ -6,9 +6,11 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
 
-app.use(express.json());
+
 app.use(cookieParser());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
+
 const allowedOrigins = [
   "http://localhost:3000",
   "https://multivendor-e-shop-frontend-1pa3ey365-dev-amber1s-projects.vercel.app",
