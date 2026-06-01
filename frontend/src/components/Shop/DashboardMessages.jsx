@@ -322,6 +322,7 @@ const MessageList = ({
       </div>
     </div>
   );
+};
 
 const SellerInbox = ({
   scrollRef,
