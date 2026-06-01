@@ -106,9 +106,8 @@ export const userReducer = createReducer(initialState, (builder) => {
 
     // Logout
     .addCase("LogoutSuccess", (state) => {
-      state.user = null;
-      state.token = null;
-      state.isAuthenticated = false;
-      state.loading = false;
+       state.user = null;
+  state.isAuthenticated = false;
+  state.loading = false;
     });
 });
