@@ -14,7 +14,6 @@ const Singup = () => {
   const [visible, setVisible] = useState(false);
   const [avatar, setAvatar] = useState(null);
 
-  console.log("SERVER:", server);
   const handleFileInputChange = (e) => {
     const reader = new FileReader();
 

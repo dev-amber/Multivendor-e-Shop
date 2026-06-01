@@ -80,7 +80,7 @@ const AllWithdraw = () => {
 
   const handleSubmit = async () => {
     await axios
-      .put(`${server}/withdraw/update-withdraw-request/${withdrawData.id}`,{
+      .put(`${process.env.REACT_APP_API_URL}/withdraw/update-withdraw-request/${withdrawData.id}`,{
         sellerId: withdrawData.shopId,
       },{withCredentials: true})
       .then((res) => {
