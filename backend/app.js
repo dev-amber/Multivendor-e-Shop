@@ -1,21 +1,36 @@
-const express=require("express");
+const express = require("express");
 const ErrorHandler = require("./middleware/error");
-const app=express()
-const cookieParser=require("cookie-parser")
-const bodyParser=require("body-parser")
-const cors=require("cors")
-const path=require("path");
+const app = express();
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const path = require("path");
 
-app.use(express.json())
-app.use(cookieParser())
-app.use(cors(({ origin: "https://multivendor-e-shop-frontend-1pa3ey365-dev-amber1s-projects.vercel.app", credentials: true })))
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://multivendor-e-shop-frontend-1pa3ey365-dev-amber1s-projects.vercel.app",
+  "https://multivendor-e-shop-frontend-cc1fipovg-dev-amber1s-projects.vercel.app"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
+
 app.use(express.static(path.join(__dirname, "./uploads")));
-app.use("/test",(req,res)=>{
-    res.send("Hello World!");
+app.use("/test", (req, res) => {
+  res.send("Hello World!");
 });
-app.use(bodyParser.urlencoded({extended:true}))
-
-
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // config
 if (process.env.NODE_ENV !== "PRODUCTION") {
@@ -24,35 +39,30 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
   });
 }
 
-
 //imports routes
-const user=require("./controller/user");
-const shop=require("./controller/shop");
-const product=require("./controller/product");
+const user = require("./controller/user");
+const shop = require("./controller/shop");
+const product = require("./controller/product");
 const event = require("./controller/event");
 const coupon = require("./controller/coupounCode");
 const payment = require("./controller/payment");
-const order=require("./controller/order");
-const conversation=require("./controller/conversation");
+const order = require("./controller/order");
+const conversation = require("./controller/conversation");
 const message = require("./controller/message");
 const withdraw = require("./controller/withdraw");
 
-
-
-app.use("/api/v2/user", user)
-app.use("/api/v2/shop", shop)
-app.use("/api/v2/product", product)
-app.use("/api/v2/event", event)
-app.use("/api/v2/coupon", coupon)
-app.use("/api/v2/payment", payment)
-app.use("/api/v2/order", order)
-app.use("/api/v2/conversation", conversation)
-app.use("/api/v2/message",message)
-app.use("/api/v2/withdraw",withdraw)
-
-
+app.use("/api/v2/user", user);
+app.use("/api/v2/shop", shop);
+app.use("/api/v2/product", product);
+app.use("/api/v2/event", event);
+app.use("/api/v2/coupon", coupon);
+app.use("/api/v2/payment", payment);
+app.use("/api/v2/order", order);
+app.use("/api/v2/conversation", conversation);
+app.use("/api/v2/message", message);
+app.use("/api/v2/withdraw", withdraw);
 
 // its for errorhandling
 app.use(ErrorHandler);
 
-module.exports=app;
+module.exports = app;

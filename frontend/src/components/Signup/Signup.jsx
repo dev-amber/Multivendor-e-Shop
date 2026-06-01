@@ -3,7 +3,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { RxAvatar } from "react-icons/rx";
 import axios from "axios";
-import styles from '../../styles/style'
+import styles from "../../styles/style";
 import { toast } from "react-toastify";
 import { server } from "../../server";
 
@@ -40,7 +40,13 @@ const Singup = () => {
         setAvatar();
       })
       .catch((error) => {
-        toast.error(error.response.data?.message);
+        console.log("Signup error:", error);
+
+        if (error.response) {
+          console.log(error.response.data);
+        } else {
+          console.log("Network/CORS error - no response from server");
+        }
       });
   };
 
