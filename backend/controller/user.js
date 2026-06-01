@@ -39,7 +39,7 @@ router.post("/create-user", async (req, res, next) => {
 
     const activationToken = createActivationToken(user);
 
-    const activationUrl = `https://multivendor-e-shop-frontend-1pa3ey365-dev-amber1s-projects.vercel.app/activation/${activationToken}`;
+    const activationUrl = `https://multivendor-e-shop-frontend-indol.vercel.app/activation/${activationToken}`;
 
     try {
       await sendMail({
