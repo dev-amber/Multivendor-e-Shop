@@ -215,7 +215,7 @@ export const categoriesData = [
     title: "Cloths",
     subTitle: "",
     image_Url:
-      "https://www.shift4shop.com/2015/images/industries/clothing/clothing-apparel.png",
+      "https://tse1.mm.bing.net/th/id/OIP.hF7QTj2zZqAf4Mu0SpB6MgHaE_?pid=Api&h=220&P=0",
   },
   {
     id: 5,
