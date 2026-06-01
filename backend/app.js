@@ -11,22 +11,29 @@ app.use(cookieParser());
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
+
+
 const allowedOrigins = [
   "http://localhost:3000",
+  "https://multivendor-e-shop-frontend-1rh488p7v-dev-amber1s-projects.vercel.app",
   "https://multivendor-e-shop-frontend-1pa3ey365-dev-amber1s-projects.vercel.app",
   "https://multivendor-e-shop-frontend-cc1fipovg-dev-amber1s-projects.vercel.app"
 ];
 
-app.use(cors({
+const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      callback(null, false); // IMPORTANT: don't throw error in serverless
     }
   },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.static(path.join(__dirname, "./uploads")));
 app.use("/test", (req, res) => {
