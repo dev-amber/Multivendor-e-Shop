@@ -6,9 +6,26 @@ const bodyParser=require("body-parser")
 const cors=require("cors")
 const path=require("path");
 
+app.set("trust proxy", 1);
+
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors(({ origin: "https://multivendor-e-shop-frontend-indol.vercel.app", credentials: true })))
+
+const allowedOrigins = [
+  process.env.FRONTEND_URL || "https://multivendor-e-shop-frontend-indol.vercel.app",
+  "http://localhost:3000",
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error("Not allowed by CORS"));
+  },
+  credentials: true,
+}))
+
 app.use(express.static(path.join(__dirname, "./uploads")));
 app.use("/test",(req,res)=>{
     res.send("Hello World!");
