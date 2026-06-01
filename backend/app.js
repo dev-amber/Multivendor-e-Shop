@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors(({ origin: "https://multivendor-e-shop-frontend-indol.vercel.app", credentials: true })))
 app.use(express.static(path.join(__dirname, "./uploads")));
-app.use("/",(req,res)=>{
+app.use("/test",(req,res)=>{
     res.send("Hello World!");
 });
 app.use(bodyParser.urlencoded({extended:true}))
