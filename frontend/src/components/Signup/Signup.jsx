@@ -5,7 +5,7 @@ import { RxAvatar } from "react-icons/rx";
 import axios from "axios";
 import styles from "../../styles/style";
 import { toast } from "react-toastify";
-import { server } from "../../server";
+
 
 const Singup = () => {
   const [email, setEmail] = useState("");
@@ -31,7 +31,7 @@ const Singup = () => {
     e.preventDefault();
 
     axios
-      .post(`${server}/user/create-user`, { name, email, password, avatar })
+      .post(`${process.env.REACT_APP_API_URL}/user/create-user`, { name, email, password, avatar })
       .then((res) => {
         toast.success(res.data.message);
         setName("");

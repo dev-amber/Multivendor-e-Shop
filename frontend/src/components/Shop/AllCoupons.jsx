@@ -8,7 +8,6 @@ import styles from "../../styles/style";
 import { useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
-import { server } from "../../server";
 import { toast } from "react-toastify";
 
 const AllCoupons = () => {
@@ -26,7 +25,7 @@ const AllCoupons = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get(`${server}/coupon/get-coupon/${seller?._id}`,{
+    axios.get(`${process.env.REACT_APP_API_URL}/coupon/get-coupon/${seller?._id}`,{
       withCredentials:true,
     }).then((res)=>{
         setIsLoading(false);
@@ -39,7 +38,7 @@ const AllCoupons = () => {
 
 
   const handleDelete = async (id) => {
-    axios.delete(`${server}/coupon/delete-coupon/${id}`,{withCredentials: true}).then((res) => {
+    axios.delete(`${process.env.REACT_APP_API_URL}/coupon/delete-coupon/${id}`,{withCredentials: true}).then((res) => {
       toast.success("Coupon code deleted succesfully!")
     })
     window.location.reload();
@@ -50,7 +49,7 @@ const AllCoupons = () => {
 
     await axios
       .post(
-        `${server}/coupon/create-coupon-code`,
+        `${process.env.REACT_APP_API_URL}/coupon/create-coupon-code`,
         {
           name,
           minAmount,

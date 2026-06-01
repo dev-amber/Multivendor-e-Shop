@@ -4,7 +4,6 @@ import { AiOutlineEye } from "react-icons/ai";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import axios from "axios";
-import { server } from "../../server";
 import { useState } from "react";
 
 const AllProducts = () => {
@@ -12,7 +11,7 @@ const AllProducts = () => {
 
   useEffect(() => {
     axios
-      .get(`${server}/product/admin-all-products`, { withCredentials: true })
+      .get(`${process.env.REACT_APP_API_URL}/product/admin-all-products`, { withCredentials: true })
       .then((res) => {
         setData(res.data.products);
       });

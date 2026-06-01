@@ -3,7 +3,6 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/style";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
-import { server } from "../../server";
 import { toast } from "react-toastify";
 
 
@@ -20,7 +19,7 @@ const ShopLogin = () => {
   const handleSubmit =async(e)=>{
     e.preventDefault();
 
-    await axios.post(`${server}/shop/login-shop`,{
+    await axios.post(`${process.env.REACT_APP_API_URL}/shop/login-shop`,{
       email,
       password,
     },{withCredentials:true}// bcz we store cookie

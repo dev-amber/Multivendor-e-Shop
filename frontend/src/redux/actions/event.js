@@ -1,4 +1,3 @@
-import { server } from "../../server";
 import axios from "axios";
 
 // create product
@@ -9,8 +8,11 @@ export const createevent = (data) => async (dispatch) => {
     });
 
     const { data: resData } = await axios.post(
-      `${server}/event/create-event`,
+      `${process.env.REACT_APP_API_URL}/event/create-event`,
       data,
+      {
+        withCredentials: true,
+      }
     );
 
     dispatch({
@@ -32,7 +34,9 @@ export const getAllEventsShop = (id) => async (dispatch) => {
       type: "getAlleventsShopRequest",
     });
 
-    const { data } = await axios.get(`${server}/event/get-all-events/${id}`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/event/get-all-events/${id}`, {
+      withCredentials: true,
+    });
     dispatch({
       type: "getAlleventsShopSuccess",
       payload: data.events || data.data,
@@ -53,8 +57,10 @@ export const deleteEvent = (id) => async (dispatch) => {
     });
 
     const { data } = await axios.delete(
-      `${server}/event/delete-shop-event/${id}`,
-      { withCredentials: true }
+      `${process.env.REACT_APP_API_URL}/event/delete-shop-event/${id}`,
+      {
+        withCredentials: true,
+      }
     );
 
     dispatch({
@@ -76,7 +82,9 @@ export const getAllEvents = () => async (dispatch) => {
       type: "getAlleventsRequest",
     });
 
-    const { data } = await axios.get(`${server}/event/get-all-events`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/event/get-all-events`, {
+      withCredentials: true,
+    });
 
     dispatch({
       type: "getAlleventsSuccess",

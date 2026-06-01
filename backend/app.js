@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 const allowedOrigins = [
   "http://localhost:3000",
   "https://multivendor-e-shop-frontend-1rh488p7v-dev-amber1s-projects.vercel.app",
-  "https://multivendor-e-shop-frontend-1pa3ey365-dev-amber1s-projects.vercel.app",
+  "https://multivendor-e-shop-frontend-oo2dwlgnl-dev-amber1s-projects.vercel.app",
   "https://multivendor-e-shop-frontend-cc1fipovg-dev-amber1s-projects.vercel.app"
 ];
 

@@ -1,4 +1,3 @@
-import { server } from "../../server";
 import axios from "axios";
 
 // create product
@@ -22,16 +21,21 @@ export const createProduct =
       });
       // its only send requestto backend not for redux
       const { data } = await axios.post(
-        `${server}/product/create-product`,
-        name,
-        description,
-        category,
-        tags,
-        originalPrice,
-        discountPrice,
-        stock,
-        shopId,
-        images,
+        `${process.env.REACT_APP_API_URL}/product/create-product`,
+        {
+          name,
+          description,
+          category,
+          tags,
+          originalPrice,
+          discountPrice,
+          stock,
+          shopId,
+          images,
+        },
+        {
+          withCredentials: true,
+        }
       );
       // dispatch write we awnt result to reducer used
       dispatch({
@@ -54,7 +58,10 @@ export const getAllProductsShop = (id) => async (dispatch) => {
     });
 
     const { data } = await axios.get(
-      `${server}/product/get-all-products-shop/${id}`,
+      `${process.env.REACT_APP_API_URL}/product/get-all-products-shop/${id}`,
+      {
+        withCredentials: true,
+      }
     );
     dispatch({
       type: "getAllProductsShopSuccess",
@@ -76,7 +83,7 @@ export const deleteProduct = (id) => async (dispatch) => {
     });
 
     const { data } = await axios.delete(
-      `${server}/product/delete-shop-product/${id}`,
+      `${process.env.REACT_APP_API_URL}/product/delete-shop-product/${id}`,
       {
         withCredentials: true,
       },
@@ -101,7 +108,7 @@ export const getAllProducts = () => async (dispatch) => {
       type: "getAllProductsRequest",
     });
 
-    const { data } = await axios.get(`${server}/product/get-all-products`);
+    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/product/get-all-products`);
     dispatch({
       type: "getAllProductsSuccess",
       payload: data.products,

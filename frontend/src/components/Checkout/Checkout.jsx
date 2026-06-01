@@ -4,7 +4,6 @@ import styles from "../../styles/style";
 import { useSelector } from "react-redux";
 import { Country, State } from "country-state-city";
 import { toast } from "react-toastify";
-import { server } from "../../server";
 import axios from "axios";
 
 const Checkout = () => {
@@ -67,7 +66,7 @@ const shippingAddress={
     e.preventDefault();
     const name = couponCode;
 
-    await axios.get(`${server}/coupon/get-coupon-value/${name}`).then((res) => {
+    await axios.get(`${process.env.REACT_APP_API_URL}/coupon/get-coupon-value/${name}`).then((res) => {
       const shopId = res.data.couponCode?.shopId;
       const couponCodeValue = res.data.couponCode?.value;
       if (res.data.couponCode !== null) {

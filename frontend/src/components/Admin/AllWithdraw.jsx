@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { server } from "../../server";
 import { DataGrid } from "@mui/x-data-grid";
 import { BsPencil } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
@@ -15,7 +14,7 @@ const AllWithdraw = () => {
 
   useEffect(() => {
     axios
-      .get(`${server}/withdraw/get-all-withdraw-request`, {
+      .get(`${process.env.REACT_APP_API_URL}/withdraw/get-all-withdraw-request`, {
         withCredentials: true,
       })
       .then((res) => {

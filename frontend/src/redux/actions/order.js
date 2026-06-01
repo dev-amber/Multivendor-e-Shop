@@ -1,4 +1,3 @@
-import { server } from "../../server";
 import axios from "axios";
 
 // get all order of user
@@ -10,7 +9,10 @@ export const getAllOrderOfUser = (userId) => async (dispatch) => {
     });
 
     const { data } = await axios.get(
-      `${server}/order/get-all-orders/${userId}`,
+      `${process.env.REACT_APP_API_URL}/order/get-all-orders/${userId}`,
+      {
+        withCredentials: true,
+      }
     );
     // dispatch write we awnt result to reducer used
     dispatch({
@@ -34,7 +36,10 @@ export const getAllOrderOfShop = (shopId) => async (dispatch) => {
     });
 
     const { data } = await axios.get(
-      `${server}/order/get-seller-all-orders/${shopId}`,
+      `${process.env.REACT_APP_API_URL}/order/get-seller-all-orders/${shopId}`,
+      {
+        withCredentials: true,
+      }
     );
     // dispatch write we awnt result to reducer used
     dispatch({
@@ -56,7 +61,7 @@ export const getAllOrdersOfAdmin = () => async (dispatch) => {
       type: "adminAllOrdersRequest",
     });
 
-    const { data } = await axios.get(`${server}/order/admin-all-orders`, {
+    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/order/admin-all-orders`, {
       withCredentials: true,
     });
 

@@ -4,7 +4,6 @@ import {  useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../styles/style";
 import { getAllOrderOfUser } from "../redux/actions/order";
-import { server } from "../server";
 import { RxCross1 } from "react-icons/rx";
 import { AiFillStar, AiOutlineMessage, AiOutlineStar } from "react-icons/ai";
 import axios from "axios";
@@ -77,7 +76,7 @@ const UserOrderDetails = () => {
       const userId = user?._id;
       const sellerId = data?.cart[0]?.shop?._id;
       await axios
-        .post(`${server}/conversation/create-new-conversation`, {
+        .post(`${process.env.REACT_APP_API_URL}/conversation/create-new-conversation`, {
           groupTitle,
           userId,
           sellerId,

@@ -1,7 +1,7 @@
 // userReducer.js + loadUser.js
 import { createReducer } from "@reduxjs/toolkit";
 import axios from "axios";
-import { server } from "../../server";
+
 
 // ✅ Initial state
 const initialState = {
@@ -39,7 +39,7 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: "LoadUserRequest" });
 
-    const { data } = await axios.get(`${server}/user/getUser`, {
+    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/user/getUser`, {
       withCredentials: true, // important for cookies
     });
 
@@ -62,7 +62,7 @@ export const loadSeller = () => async (dispatch) => {
   try {
     dispatch({ type: "LoadSellerRequest" });
 
-    const { data } = await axios.get(`${server}/shop/getSeller`, {
+    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/shop/getSeller`, {
       withCredentials: true, // ✅ send cookies
     });
 
@@ -96,7 +96,7 @@ export const updateUserInformation =
       });
 
       const { data } = await axios.put(
-        `${server}/user/update-user-info`,
+        `${process.env.REACT_APP_API_URL}/user/update-user-info`,
         {
           email,
           password,
@@ -131,7 +131,7 @@ export const updateUserAddress =
       console.log(country, city, address1, address2, zipCode, addressType);
 
       const { data } = await axios.put(
-        `${server}/user/update-user-addresses`,
+        `${process.env.REACT_APP_API_URL}/user/update-user-addresses`,
         {
           country,
           city,
@@ -165,7 +165,7 @@ export const deleteUserAddress = (id) => async (dispatch) => {
       type: "deleteUserAddressRequest",
     });
     const { data } = await axios.delete(
-      `${server}/user/delete-user-address/${id}`,
+      `${process.env.REACT_APP_API_URL}/user/delete-user-address/${id}`,
       { withCredentials: true },
     );
 
@@ -190,7 +190,7 @@ export const getAllUsers = () => async (dispatch) => {
     dispatch({
       type: "getAllUsersRequest",
     });
-    const { data } = await axios.get(`${server}/user/admin-all-users`, {
+    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/user/admin-all-users`, {
       withCredentials: true,
     });
 

@@ -4,13 +4,13 @@ import { AiOutlineEye } from "react-icons/ai";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import axios from "axios";
-import { server } from "../../server";
+
 
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
     axios
-      .get(`${server}/event/admin-all-events`, { withCredentials: true })
+      .get(`${process.env.REACT_APP_API_URL}/event/admin-all-events`, { withCredentials: true })
       .then((res) => {
         setEvents(res.data.events);
       });

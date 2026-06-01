@@ -8,7 +8,6 @@ import { DataGrid } from "@mui/x-data-grid";
 import styles from "../../styles/style";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { server } from "../../server";
 import {getAllSellers} from "../../redux/actions/seller"
 
 const AllSeller = () => {
@@ -25,7 +24,7 @@ const AllSeller = () => {
 
   const handleDelete = async (id) => {
     await axios
-      .delete(`${server}/shop/delete-seller/${id}`, { withCredentials: true })
+      .delete(`${process.env.REACT_APP_API_URL}/shop/delete-seller/${id}`, { withCredentials: true })
       .then((res) => {
         toast.success(res.data.message)
       });

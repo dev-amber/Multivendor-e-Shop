@@ -6,7 +6,7 @@ const Sponsored = () => {
     <div  className={`${styles.section} hidden sm:block bg-white py-10 px-5 mb-12 cursor-pointer rounded-xl`}>
      <div className='flex justify-between w-full'>
        <div className='flex items-start'>
-       <img src='https://logos-world.net/wp-content/uploads/2020/04/Sony-Logo.png'
+       <img src='https://tse1.mm.bing.net/th/id/OIP.4ugfRGe0y6D7KyCYtLU1JgHaEK?pid=Api&h=220&P=0'
         style={{
             width:  "150px",
             objectFit:"contain"
@@ -15,7 +15,7 @@ const Sponsored = () => {
        </div>
 
        <div className='flex items-start'>
-       <img src='https://logos-world.net/wp-content/uploads/2020/08/Dell-Logo-1989-2016.png' 
+       <img src='https://tse1.mm.bing.net/th/id/OIP.LSfbmeEcA_jvnVaHrrD2CQHaHa?pid=Api&h=220&P=0' 
        style={{
             width:  "150px",
             objectFit:"contain"

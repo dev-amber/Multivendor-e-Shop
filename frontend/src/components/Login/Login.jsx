@@ -3,7 +3,6 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/style";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { server } from "../../server";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -15,7 +14,7 @@ const Login = () => {
     e.preventDefault();
     await axios
       .post(
-        `${server}/user/login-user`,
+        `${process.env.REACT_APP_API_URL}/user/login-user`,
         {
           email,
           password,
