@@ -28,7 +28,7 @@ const ProfileContent = ({ active }) => {
   const [email, setEmail] = useState(user && user.email);
   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
   const [password, setPassword] = useState("");
-  const [avatar] = useState(null);
+  const [avatar,setAvatar] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -232,7 +232,7 @@ const ShippingInfo = ({
               value={city}
               onChange={(e) => setCity(e.target.value)}
             >
-              <option value="">Choose your city</option>
+              <option value="">Choose your Province</option>
               {State.getStatesOfCountry(country).map((item) => (
                 <option key={item.isoCode} value={item.isoCode}>
                   {item.name}
