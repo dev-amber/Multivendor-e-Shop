@@ -11,6 +11,7 @@ const Events = () => {
   const { allEvents = [], isLoading = false } = useSelector(
     (state) => state.event || {}
   );
+  console.log(allEvents);
 
   useEffect(() => {
     dispatch(getAllEvents());
