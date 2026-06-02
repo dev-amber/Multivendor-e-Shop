@@ -3,30 +3,35 @@ import styles from "../../styles/style";
 import EventCard from "./EventCard";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllEvents } from "../../redux/actions/event";
+
 const Events = () => {
   const dispatch = useDispatch();
-  const { allEvents = [], isLoading } = useSelector((state) => state.event);
+
+  // ✅ SAFE STATE (prevents undefined crash)
+  const { allEvents = [], isLoading = false } = useSelector(
+    (state) => state.event || {}
+  );
 
   useEffect(() => {
     dispatch(getAllEvents());
   }, [dispatch]);
 
-  console.log("Events:", allEvents);
+  const event = allEvents?.[0];
 
   return (
     <div>
       {!isLoading && (
-        <div className={`${styles.section}`}>
-          <div className={`${styles.heading}`}>
+        <div className={styles.section}>
+          <div className={styles.heading}>
             <h1>Popular Events</h1>
           </div>
 
           <div className="w-full grid">
-            {allEvents && allEvents.length !== 0 && (
-              <EventCard data={allEvents[0]} />
+            {event ? (
+              <EventCard data={event} />
+            ) : (
+              <h4>No Events available</h4>
             )}
-
-            <h4>{allEvents && allEvents.length === 0 && "No Events have!"}</h4>
           </div>
         </div>
       )}
