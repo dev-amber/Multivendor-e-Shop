@@ -226,7 +226,7 @@ const ShippingInfo = ({
           </div>
 
           <div className="w-[50%]">
-            <label className="block pb-2">City</label>
+            <label className="block pb-2">Province</label>
             <select
               className="w-[95%] border h-[40px] rounded-[5px]"
               value={city}
