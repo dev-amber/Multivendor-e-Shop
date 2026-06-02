@@ -1,43 +1,40 @@
-import React, { useEffect } from "react";
-import styles from "../../styles/style";
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux';
+import styles from '../../styles/styles'
 import EventCard from "./EventCard";
-import { useSelector, useDispatch } from "react-redux";
-import { getAllEvents } from "../../redux/actions/event";
 
 const Events = () => {
-  const dispatch = useDispatch();
-
-  // ✅ SAFE STATE (prevents undefined crash)
-  const { allEvents = [], isLoading = false } = useSelector(
-    (state) => state.event || {}
-  );
-  console.log(allEvents);
-
-  useEffect(() => {
-    dispatch(getAllEvents());
-  }, [dispatch]);
-
-  const event = allEvents?.[0];
-
+  const {allEvents,isLoading} = useSelector((state) => state.events);  
+   
   return (
     <div>
-      {!isLoading && (
-        <div className={styles.section}>
-          <div className={styles.heading}>
-            <h1>Popular Events</h1>
-          </div>
+     {
+      !isLoading && (
+        <div className={`${styles.section}`}>
+      <div className={`${styles.heading}`}>
+        <h1>Popular Events</h1>
+      </div>
 
-          <div className="w-full grid">
-            {event ? (
-              <EventCard data={event} />
-            ) : (
-              <h4>No Events available</h4>
-            )}
-          </div>
-        </div>
-      )}
+      <div className="w-full grid">
+         {
+          allEvents.length !== 0 && (
+            <EventCard data={allEvents && allEvents[0]} />
+          )
+         }
+         <h4>{
+           allEvents?.length === 0 && (
+            'No Events have!'
+           )
+          }
+
+         </h4>
+      </div>
+     
     </div>
-  );
-};
+      )
+     }
+  </div>
+  )
+}
 
-export default Events;
+export default Events
