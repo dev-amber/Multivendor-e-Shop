@@ -51,7 +51,7 @@ router.post("/create-shop", async (req, res, next) => {
 
     // create activation token
     const activationToken = createActivationToken(seller);
-    const activationUrl = `localhost:3000/activation/${activationToken}`;
+    const activationUrl = `https://multivendor-e-shop-frontend-gray.vercel.app/activation/${activationToken}`;
 
     // send activation email
     try {

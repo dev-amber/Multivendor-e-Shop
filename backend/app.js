@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 app.use(
   cors({
-    origin: ["localhost:3000"],
+    origin: ["https://multivendor-e-shop-frontend-gray.vercel.app"],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   })
