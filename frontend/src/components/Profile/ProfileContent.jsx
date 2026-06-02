@@ -28,7 +28,7 @@ const ProfileContent = ({ active }) => {
   const [email, setEmail] = useState(user && user.email);
   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
   const [password, setPassword] = useState("");
-  const [setAvatar]=useState(null);
+  const [avatar, setAvatar] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const ProfileContent = ({ active }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateUserInformation(name, email, phoneNumber, password));
+    dispatch(updateUserInformation({ name, email, phoneNumber, password }));
   };
   const handleImage = async (e) => {
     const reader = new FileReader();
@@ -606,8 +606,7 @@ const Address = () => {
                     </select>
                   </div>
                   {/* city */}
-                  <div className="w-full pb-2">
-                    <label className="block pb-2">Choose your City</label>
+                  <div className="w-full pb-2"><label>Province</label>
                     <select
                       name=""
                       id=""
@@ -616,7 +615,7 @@ const Address = () => {
                       className="w-[95%] h-[40px] border rounded-[5px]"
                     >
                       <option value="" className="block pb-2">
-                        choose your city
+                        choose your Province
                       </option>
                       {State &&
                         State.getStatesOfCountry(country).map((item) => (
