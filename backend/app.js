@@ -12,28 +12,13 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 
-
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://multivendor-e-shop-frontend-1rh488p7v-dev-amber1s-projects.vercel.app",
-  "https://multivendor-e-shop-frontend-oo2dwlgnl-dev-amber1s-projects.vercel.app",
-  "https://multivendor-e-shop-frontend-cc1fipovg-dev-amber1s-projects.vercel.app"
-];
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(null, false); // IMPORTANT: don't throw error in serverless
-    }
-  },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
-};
-
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: ["https://multivendor-e-shop-frontend-mcjs8b87g-dev-amber1s-projects.vercel.app"],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+  })
+);
 
 app.use(express.static(path.join(__dirname, "./uploads")));
 app.use("/test", (req, res) => {
