@@ -19,6 +19,7 @@ exports.isAuthenticated = catchAsyncErrors(async (req, res, next) => {
   console.log("✅ Decoded JWT payload:", decoded); // 👈 log decoded token
 
   req.user = await User.findById(decoded.id);
+  console.log("decoded token:", decoded);
 
   if (!req.user) {
     console.log("❌ No user found for this token ID");
